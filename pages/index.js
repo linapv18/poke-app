@@ -6,11 +6,17 @@ import PokemonInfo from "../components/PokemonInfo";
 import { fetcher } from "../utils/request";
 import { Oval } from "react-loader-spinner";
 
+const BASE_URL = "https://pokeapi.co/api/v2";
+
 const Home = () => {
   const [pokemonName, setPokemonName] = useState();
   const [searchValue, setSearchValue] = useState("");
   const { data, error, isLoading } = useSWR(
-    pokemonName ? `https://pokeapi.co/api/v2/pokemon/${pokemonName}/` : null,
+    pokemonName ? `${BASE_URL}/pokemon/${pokemonName}/` : null,
+    fetcher
+  );
+  const { data: extendedData, isLoading: isLoadingExtendedData } = useSWR(
+    pokemonName ? `${BASE_URL}/pokemon-species/${pokemonName}/` : null,
     fetcher
   );
 
@@ -25,7 +31,7 @@ const Home = () => {
   };
 
   const renderContent = () => {
-    if (isLoading)
+    if (isLoading || isLoadingExtendedData)
       return (
         <div className="mx-auto my-28">
           <Oval
@@ -58,13 +64,13 @@ const Home = () => {
           to display the information!
         </Message>
       );
-    return <PokemonInfo data={data} />;
+    return <PokemonInfo data={{ ...data, ...extendedData }} />;
   };
 
   return (
     <div className="">
       <Background type={data?.types[0].type.name} />
-      <div className="container mx-auto shadow-xl mt-36 text-slate-700 max-w-3xl flex flex-col p-5 relative bg-white min-h-[610px]">
+      <div className="container mx-auto shadow-custom mt-36 text-slate-700 max-w-3xl flex flex-col p-5 relative bg-white min-h-[610px]">
         <h1 className="text-4xl font-semibold text-center">PokeSearch</h1>
         <form onSubmit={onSubmit} className="mx-auto my-3 w-3/5 h-14">
           <input

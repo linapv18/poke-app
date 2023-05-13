@@ -2,7 +2,10 @@ import React from "react";
 import Image from "next/image";
 
 const PokemonInfo = ({ data }) => {
-  const { sprites, id, name, types, stats } = data;
+  const { sprites, id, name, types, stats, flavor_text_entries } = data;
+  const flavorTextEntry = flavor_text_entries.find(
+    ({ language }) => language.name === "en"
+  );
 
   return (
     <>
@@ -18,22 +21,13 @@ const PokemonInfo = ({ data }) => {
       </h2>
       <div>
         <h3 className="font-medium text-2xl">About</h3>
-        <div className="text-lg">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum minima
-          excepturi nam? Quas ad in impedit modi! Delectus quibusdam nihil odit
-          consequuntur nostrum. Itaque, explicabo praesentium sunt adipisci
-          doloribus quo.
-        </div>
+        <div className="text-lg">{flavorTextEntry?.flavor_text}</div>
       </div>
       <div className="mt-10 flex justify-between">
         <div>
           <h3 className="font-medium text-2xl">Types</h3>
-          <div className="text-lg mt-px">
-            {types
-              ?.map((type) => {
-                type.type.name;
-              })
-              .join(",")}
+          <div className="text-lg mt-px capitalize">
+            {types?.map(({ type }) => type.name).join(", ")}
           </div>
         </div>
         <div>
