@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 
-const PokemonInfo = ({ pokemonData }) => {
-  const { sprites, id, name, types, stats } = pokemonData;
+const PokemonInfo = ({ data }) => {
+  const { sprites, id, name, types, stats } = data;
 
   return (
     <>

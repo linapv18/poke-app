@@ -1,15 +1,16 @@
 import React from "react";
+import getBgColor from "./utils";
 
-const Background = () => {
+const Background = ({type}) => {
   return (
-    <svg className="w-full absolute z-0 top-0"
+    <svg className="w-full absolute z-0 top-0 h-[120vh]"
       viewBox="0 0 1440 800"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
         d="M1 1004H1442.5V0C966.314 518.626 644.677 571.095 1 359.5V1004Z"
-        fill="#62E18D"
+        fill= {getBgColor(type)}
       />
       <g filter="url(#filter0_d_202_200)">
         <path
@@ -60,8 +61,8 @@ const Background = () => {
           y2="1001"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#8CF691" />
-          <stop offset="1" stopColor="#80EF91" />
+          <stop stopColor={getBgColor(type, 0.8)} />
+          <stop offset="1" stopColor= {getBgColor(type)} />
         </linearGradient>
       </defs>
     </svg>
