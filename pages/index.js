@@ -46,7 +46,7 @@ const Home = () => {
       return (
         <Message>
           We couldn't find any pokemon with that name/id. 😔 Please try entering
-          a different one.{" "}
+          a different one.
         </Message>
       );
     if (!data)
@@ -65,7 +65,7 @@ const Home = () => {
     <div className="">
       <Background type={data?.types[0].type.name} />
       <div className="container mx-auto shadow-xl mt-36 text-slate-700 max-w-3xl flex flex-col p-5 relative bg-white min-h-[610px]">
-        <div className="text-4xl font-semibold text-center">PokeSearch</div>
+        <h1 className="text-4xl font-semibold text-center">PokeSearch</h1>
         <form onSubmit={onSubmit} className="mx-auto my-3 w-3/5 h-14">
           <input
             className="border rounded border-inherit text-base h-14 w-full pl-4 border-stone-400"

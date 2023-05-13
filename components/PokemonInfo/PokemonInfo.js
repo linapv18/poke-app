@@ -13,11 +13,11 @@ const PokemonInfo = ({ data }) => {
         height={130}
         className="mx-auto mt-3"
       />
-      <div className="font-semibold text-center text-3xl capitalize">
+      <h2 className="font-semibold text-center text-3xl capitalize">
         No {id} {name}
-      </div>
+      </h2>
       <div>
-        <div className="font-medium text-2xl">About</div>
+        <h3 className="font-medium text-2xl">About</h3>
         <div className="text-lg">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum minima
           excepturi nam? Quas ad in impedit modi! Delectus quibusdam nihil odit
@@ -27,7 +27,7 @@ const PokemonInfo = ({ data }) => {
       </div>
       <div className="mt-10 flex justify-between">
         <div>
-          <div className="font-medium text-2xl">Types</div>
+          <h3 className="font-medium text-2xl">Types</h3>
           <div className="text-lg mt-px">
             {types
               ?.map((type) => {
@@ -37,11 +37,11 @@ const PokemonInfo = ({ data }) => {
           </div>
         </div>
         <div>
-          <div className="font-medium text-2xl">Stats</div>
+          <h3 className="font-medium text-2xl">Stats</h3>
           <div className="w-60 text-sm">
             <div className="flex justify-between font-bold">
-              <div>Stats</div>
-              <div>Value</div>
+              <div className="font-bold">Stats</div>
+              <div className="font-bold">Value</div>
             </div>
             <div className="flex justify-between">
               <div>HP</div>
