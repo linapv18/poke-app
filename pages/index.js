@@ -24,7 +24,7 @@ const Home = () => {
 
   const searchEntry = (e) => {
     const { value } = e.target;
-    setSearchValue(value);
+    setSearchValue(value.toLowerCase().trim());
   };
 
   const onSubmit = (e) => {
